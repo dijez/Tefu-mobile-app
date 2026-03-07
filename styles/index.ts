@@ -4,8 +4,10 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
 
     container :{
-    backgroundColor: '#DEDEDE',
-    margin: 10
+        flex: 1,
+    backgroundColor: '#FFFFFF',
+    margin: 10,
+    overflowY: 'scroll',
     },
     text:{
         color: 'red'
@@ -45,16 +47,159 @@ const styles = StyleSheet.create({
     findmosque:{
         fontSize: 18,
         fontWeight: 'regular',
-        fontFamily: 'noto sans arabic',
+        fontFamily: 'Noto Sans Arabic',
         alignItems: 'center',
         textAlign: 'left' ,
         color: '#363636',
         lineHeight: 30
     },
+    manpraying:{
+        alignContent: 'center'
+    },
     secondpart:{
         display: 'flex',
         flexDirection: 'column',
         gap: 20
+    },
+    mosquenear:{
+        color: '#063923',
+        textAlign: 'center',
+        alignItems: 'center',
+        fontFamily: 'inter',
+        fontWeight: 'bold',
+        fontSize: 28,
+        paddingBottom: 25,
+    },
+    searchcitycontainer:{
+        backgroundColor: '#E8E8E8',
+        borderWidth: 2,
+        borderColor: '#E1E1E1',
+        borderRadius: 12,
+        // marginBottom: 20,
+        justifyContent: 'space-evenly',
+        display: 'flex',
+        flexDirection: 'row',
+        gap: 12,
+        padding: 12,
+    },
+    inputsearchcity:{
+        color: '#8F8F8F',
+        fontFamily:'Noto Sans Arabic',
+        fontSize: 16,
+        fontWeight: 'normal',
+        width: 250,
+    },
+
+    
+    listmoquecontainer:{
+        marginTop: 30,
+        // justifyContent:'center',
+        alignItems:'center',
+    },
+    
+    polygonrectanglemosque:{
+        width: 253.67,
+        height: 407,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingTop: 40,
+        
+    },
+
+    textContainer:{
+    alignItems: 'center', 
+    justifyContent: 'center'
+    },
+    mosqueimage:{
+        width: 120.41,
+        height: 85.09,
+        // resizeMode: 'center',
+        alignItems: 'center',
+        marginBottom: 15
+        
+    },
+    mosquelistcontainer:{
+        display: 'flex',
+        gap: 5
+    },
+    mosquelistname:{
+        fontFamily: 'inter',
+        fontSize: 18,
+        fontWeight: 'bold',
+        lineHeight: 24,
+        width:126,
+        textAlign: 'center',
+
+
+    },
+    mosquelistmetersaway:{
+        fontSize: 14,
+        fontFamily:'Noto Sans Arabic',
+        fontWeight: 'regular',
+        lineHeight: 20,
+        textAlign:'center'
+    },
+    mosquelistprayercontainer:{
+        backgroundColor:'#E7EFE8',
+        borderRadius: 12,
+        margin: 12,
+        paddingHorizontal: 20,
+        paddingVertical: 5,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 5,
+        
+    },
+    mosquelistprayer:{
+        fontSize: 14,
+        fontFamily:'Noto Sans Arabic',
+        fontWeight: 'regular',
+        lineHeight: 20,
+        textAlign:'center'
+    },
+    mosquelisttime:{
+        fontFamily: 'inter',
+        fontSize: 18,
+        fontWeight: 'bold',
+        lineHeight: 24,
+        textAlign: 'center',                  
+        
+    },
+    mosquelistIqamahcontainer:{
+        display: 'flex',
+        flexDirection: 'row'
+    },
+    mosquelistIqamah:{
+        fontSize: 14,
+        fontFamily:'Noto Sans Arabic',
+        fontWeight: 'regular',
+        lineHeight: 20,
+        textAlign:'center'
+    },
+    mosquelistIqamahtime:{
+        fontSize: 14,
+        fontFamily:'Noto Sans Arabic',
+        fontWeight: 'regular',
+        lineHeight: 20,
+        textAlign:'center'
+    },
+    mosquelistbuttoncontainer:{
+        backgroundColor: '#0A5F3A',
+        color: '#fff',
+        borderRadius: 12,
+        paddingHorizontal:30,
+        paddingVertical: 9,
+        display: 'flex',
+        flexDirection: 'row',
+        gap: 12,
+
+    },
+    mosquelistbutton:{
+        color: '#FBFBFB',
+        fontFamily: 'Noto Sans Arabic',
+        fontWeight: 'bold',
+        fontSize: 16,
+        lineHeight: 22,
     }
 })
 
