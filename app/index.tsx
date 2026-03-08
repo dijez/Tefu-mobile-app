@@ -5,10 +5,23 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import Feather from '@expo/vector-icons/Feather';
 import CustomShape from "@/component/customshape";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { mosques } from "@/data/mosque";
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useWindowDimensions } from "react-native";
+import { Pressable } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 
 export default function Index() {
 
-  const [text, setText] = useState('')
+  const [text, setText] = useState('');
+  const {width} = useWindowDimensions();
+  const BREAKPOINT_TABLET = 768;
+  const isSmallDevice = width < BREAKPOINT_TABLET;
+  const navigation = useNavigation();
+
+
   return (
     <View 
     style={styles.container}
@@ -19,10 +32,20 @@ export default function Index() {
         <Text style={styles.tefu}>Tefu</Text>
         </View>
         
+          <Pressable 
+          
+        style={ ( { pressed}) => [
+          {transform:[{ scale: pressed ? 0.94 : 1}]}
+          // pressed && {opacity: 0.7}
+        ]}
+        >
           <Ionicons name="menu-outline" size={24} color="black" />
+        </Pressable>
           {/* <Image source={require("../assets/images/Hamburger Menu.png")}/> */}
       </View>
+      
      
+
      <View style={styles.secondpart}>
       <Text style={styles.congregation}>Never Miss a Congregation.</Text>
       <Text style={ styles.findmosque}>Find nearby mosques, see prayer times, and join jamā‘ah wherever you are.</Text>
@@ -44,48 +67,100 @@ export default function Index() {
           
       </View>
      </View>
+        
 
-     <View style={styles.listmoquecontainer}>
-      
-      <ImageBackground style={styles.polygonrectanglemosque}  source={require("../assets/images/Union.png")} resizeMode="contain" >  
+     <View 
+     style={[
+      styles.listmosquecontainer,
+      { flexDirection: isSmallDevice ? "column" : "row" }
+      ]}>
+      {
+        mosques.map((mosque) => (
+      <ImageBackground
+      key={mosque.id}
+       style={[styles.polygonrectanglemosque]}  
+       source={require("../assets/images/Union.png")} 
+       resizeMode="contain" >  
         
         <View style={styles.textContainer}>
-            <Image style={styles.mosqueimage} source={require("../assets/images/mosque.png")} />
+            <Image 
+            style={styles.mosqueimage} 
+            source={require("../assets/images/mosque.png")} />
         </View>
 
         <View style={styles.mosquelistcontainer}>
-          <Text style={styles.mosquelistname} >Al-Nur Central Mosque</Text>
-          <Text style={styles.mosquelistmetersaway}>450 m away</Text>
+
+          <Text style={styles.mosquelistname} >{mosque.name}</Text>
+          <Text style={styles.mosquelistmetersaway}>{mosque.meters} m away</Text>
         </View>
 
         <View style={styles.mosquelistprayercontainer}>
           <Text style={styles.mosquelistprayer}>MAHGRIB</Text>
-          <Text style={styles.mosquelisttime}>7:15 PM</Text>
+          <Text style={styles.mosquelisttime}>{mosque.prayerTimes.maghrib}</Text>
           
           <View style={ styles.mosquelistIqamahcontainer}>
-          <Text style={styles.mosquelistIqamah}>Iqamah </Text>
-          <Text style={styles.mosquelistIqamahtime}>7:05</Text>
+              <Text style={styles.mosquelistIqamah}>Iqamah </Text>
+            <Text style={styles.mosquelistIqamahtime}>{mosque.iqamahTimes?.iqamahMagrib}</Text>
           </View>
         </View>
 
+
+        <Pressable 
+        style={ ( { pressed}) => [
+          {transform:[{ scale: pressed ? 0.94 : 1}]}
+          // pressed && {opacity: 0.7}
+        ]}
+        onPress={() => navigation.navigate("navigation")}
+        >
         <View style={styles.mosquelistbuttoncontainer}>
           <Text style={styles.mosquelistbutton}>Navigate</Text>
           <MaterialIcons name="route" size={20} color="white" />
         </View>
+        </Pressable>
         </ImageBackground>
+        ))
+      }
 
-        
-      {/* <View style={styles.polygonrectanglemosque}>
-      <Image   source={require("../assets/images/Union.png")} />  
-      </View>
 
-        <View style={styles.textContainer}>
-      <Image style={styles.mosqueimage} source={require("../assets/images/mosque.png")} />
-        
+      <Pressable 
+        style={ ( { pressed}) => [
+          {transform:[{ scale: pressed ? 0.94 : 1}]}
+          // pressed && {opacity: 0.7}
+        ]}
+        >
+      <View style={styles.seemorecontainer}>
+        <Text style={styles.seemore}>
+          See more 
+        </Text>
+        <MaterialCommunityIcons name="arrow-right" size={20} color="black" />
       </View>
- */}
+        </Pressable>
+        
+      
      </View>
 
+
+        <Pressable 
+        style={ ( { pressed}) => [
+          styles.feedbackcontainer,
+          {transform:[{ scale: pressed ? 0.94 : 1}]}
+          // pressed && {opacity: 0.7}
+        ]}
+        >
+
+          {/* <Icon></Icon> */}
+          <LinearGradient
+          colors={['#0A5F3A' , '#063923']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={styles.feedbackcontainer}
+          >
+          
+          <Text style={styles.feedback}>
+            Leave a feedback
+          </Text>
+          </LinearGradient>
+        </Pressable>
 
     </View>
   );

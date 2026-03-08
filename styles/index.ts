@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 
 const styles = StyleSheet.create({
-
+    
     container :{
         flex: 1,
     backgroundColor: '#FFFFFF',
@@ -91,10 +91,11 @@ const styles = StyleSheet.create({
     },
 
     
-    listmoquecontainer:{
-        marginTop: 30,
+    listmosquecontainer:{
+        margin: 30,
         // justifyContent:'center',
         alignItems:'center',
+        // flexWrap: "wrap"
     },
     
     polygonrectanglemosque:{
@@ -103,6 +104,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     paddingTop: 40,
+    marginBottom: 30,
         
     },
 
@@ -192,6 +194,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         gap: 12,
+        marginTop: 10,
 
     },
     mosquelistbutton:{
@@ -200,6 +203,45 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 16,
         lineHeight: 22,
+    },
+    seemorecontainer:{
+          backgroundColor: '#E8E8E8',
+        borderWidth: 2,
+        borderColor: '#E1E1E1',
+        borderRadius: 12,
+        display: 'flex',
+        flexDirection: 'row',
+        gap: 12,
+        paddingVertical: 12,
+        // paddingHorizontal: 85,
+        marginTop: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 354,
+    },
+    seemore:{
+        fontFamily: 'Noto Sans Arabic',
+        fontSize: 16,
+        fontWeight: 'bold',
+        lineHeight: 22,
+    },
+    feedbackcontainer:{
+        borderRadius: 12,
+        paddingVertical: 13,
+        paddingHorizontal: 16,
+        width: 206,
+        alignSelf:'flex-end',
+    },
+    feedback:{
+        alignSelf: 'center',
+         fontFamily: 'Noto Sans Arabic',
+        fontSize: 16,
+        fontWeight: 'bold',
+        lineHeight: 22,
+        color: '#FBFBFB'
+    },
+    feedbackgradient:{
+
     }
 })
 
