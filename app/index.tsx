@@ -9,11 +9,14 @@ import { mosques } from "@/data/mosque";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useWindowDimensions } from "react-native";
-import { Pressable } from "react-native";
+import { Pressable,Modal } from "react-native";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import Footer from "@/component/Footer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useRouter } from "expo-router";
+import { BlurView } from "expo-blur";
+
+
 
 
 export default function Index() {
@@ -24,6 +27,7 @@ export default function Index() {
   const isSmallDevice = width < BREAKPOINT_TABLET;
   const navigation = useNavigation();
   const router = useRouter()
+  const [ModalVisible, setModalVisibile] = useState(false);
 
   return (
     <View 
@@ -143,28 +147,93 @@ export default function Index() {
 
 
         <Pressable 
-        style={ ( { pressed}) => [
+          onPress={() => setModalVisibile(true)}
+          style={ ( { pressed}) => [
           styles.feedbackcontainer,
           {transform:[{ scale: pressed ? 0.94 : 1}]}
           // pressed && {opacity: 0.7}
-        ]}
+          ]}
         >
 
           {/* <Icon></Icon> */}
-          <LinearGradient
+        <LinearGradient
           colors={['#0A5F3A' , '#063923']}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
           style={styles.feedbackcontainer}
-          >
+        >
           
           <Text style={styles.feedback}>
             Leave a feedback
           </Text>
-          </LinearGradient>
+        </LinearGradient>
         </Pressable>
 
         <Footer/>
+        <Modal
+  transparent={true}
+  visible={ModalVisible}
+  animationType="fade"
+>
+  <View style={{ flex: 1 }}>
+
+    <BlurView
+      intensity={60}
+      tint="dark"
+      style={{
+        position: "absolute",
+        width: "100%",
+        height: "100%"
+      }}
+    />
+
+    <View style={styles.modalContainer}>
+      <View style={styles.modalCard}>
+
+        <View style={styles.leavefeedbackcontainer}>
+          <Pressable onPress={() => setModalVisibile(false)}>
+        <MaterialCommunityIcons name="arrow-left" size={24} color="black" />
+          </Pressable>
+        <Text style={styles.leavefeedback}>Leave Feedback</Text>
+        </View>
+
+        <View style={styles.feedbackinputcontainer}>
+          <View>
+          <Text style={styles.firstname}>
+            Fullname
+          </Text>
+           <TextInput
+        id="firstname"
+        style={styles.firstnameinput}
+        placeholder="E.g. Aliyu Ahmed Bello"
+        placeholderTextColor={'#8F8F8F'}
+        value={text}
+        onChangeText={setText}
+        />
+        </View>
+        <View>
+
+           <TextInput
+        id="typefeedack"
+        style={styles.typefeedbackinput}
+        placeholder="Type your feedback here"
+        placeholderTextColor={'#8F8F8F'}
+        value={text}
+        onChangeText={setText}
+        />
+        </View>
+
+
+        </View>
+
+        <Pressable onPress={() => setModalVisibile(false)}>
+          <Text>Close</Text>
+        </Pressable>
+      </View>
+    </View>
+
+  </View>
+</Modal>
     </View>
   );
 }

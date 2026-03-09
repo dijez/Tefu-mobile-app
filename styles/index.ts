@@ -234,15 +234,79 @@ const styles = StyleSheet.create({
     },
     feedback:{
         alignSelf: 'center',
-         fontFamily: 'Noto Sans Arabic',
+        fontFamily: 'Noto Sans Arabic',
         fontSize: 16,
         fontWeight: 'bold',
         lineHeight: 22,
         color: '#FBFBFB'
     },
     feedbackgradient:{
+        
+    },
+    modalContainer: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    modalCard: {
+        width: "95%",
+        backgroundColor: "#FBFBFB",
+        paddingLeft: 16,
+        paddingRight: 16,
+        paddingTop: 16,
+        paddingBottom: 24,
+        borderRadius: 12
+    },
+    leavefeedback:{
+        fontFamily: 'inter',
+        fontSize: 22,
+        fontWeight:'semibold',
+        lineHeight: 28,
 
-    }
+    },
+    leavefeedbackcontainer:{
+        display: 'flex',
+        flexDirection: 'row',
+        gap: 25,
+        alignContent: 'center',
+        marginBottom: 20
+    },
+
+    firstnamecontainer:{
+
+    },
+    firstname:{
+          fontSize: 14,
+        fontWeight: 'regular',
+        fontFamily: 'Noto Sans Arabic',
+        lineHeight: 36,
+
+    },
+    firstnameinput:{
+        paddingHorizontal: 16,
+        paddingVertical: 13,
+        borderRadius: 12,
+        borderWidth: 2,
+        borderColor: '#E1E1E1',
+        backgroundColor: '#FBFBFB',
+    },
+   
+    typefeedbackinput:{
+        textAlign: 'left',
+        alignItems: 'center',
+        justifyContent: 'flex-start',        
+        height: 144,
+        paddingHorizontal: 16,
+        paddingVertical: 13,
+        borderRadius: 12,
+        borderWidth: 2,
+        borderColor: '#E1E1E1',
+        backgroundColor: '#FBFBFB',
+    },
+   
+    feedbackinputcontainer:{
+
+    },
 })
 
 export {styles}
