@@ -10,7 +10,10 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useWindowDimensions } from "react-native";
 import { Pressable } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import Footer from "@/component/Footer";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useRouter } from "expo-router";
 
 
 export default function Index() {
@@ -20,7 +23,7 @@ export default function Index() {
   const BREAKPOINT_TABLET = 768;
   const isSmallDevice = width < BREAKPOINT_TABLET;
   const navigation = useNavigation();
-
+  const router = useRouter()
 
   return (
     <View 
@@ -44,8 +47,7 @@ export default function Index() {
           {/* <Image source={require("../assets/images/Hamburger Menu.png")}/> */}
       </View>
       
-     
-
+      
      <View style={styles.secondpart}>
       <Text style={styles.congregation}>Never Miss a Congregation.</Text>
       <Text style={ styles.findmosque}>Find nearby mosques, see prayer times, and join jamā‘ah wherever you are.</Text>
@@ -110,7 +112,7 @@ export default function Index() {
           {transform:[{ scale: pressed ? 0.94 : 1}]}
           // pressed && {opacity: 0.7}
         ]}
-        onPress={() => navigation.navigate("navigation")}
+        onPress={() => router.push("/navigation")}
         >
         <View style={styles.mosquelistbuttoncontainer}>
           <Text style={styles.mosquelistbutton}>Navigate</Text>
@@ -162,6 +164,7 @@ export default function Index() {
           </LinearGradient>
         </Pressable>
 
+        <Footer/>
     </View>
   );
 }
