@@ -1,3 +1,4 @@
+import feedback from "@/app/feedback";
 import { StyleSheet } from "react-native";
 
 
@@ -72,7 +73,6 @@ const styles = StyleSheet.create({
     },
     searchcitycontainer:{
         backgroundColor: '#E8E8E8',
-        borderWidth: 2,
         borderColor: '#E1E1E1',
         borderRadius: 12,
         // marginBottom: 20,
@@ -81,11 +81,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         gap: 12,
         padding: 12,
+        borderWidth: 2,
     },
     inputsearchcity:{
         color: '#8F8F8F',
         fontFamily:'Noto Sans Arabic',
         fontSize: 16,
+        // borderWidth: 0,
         fontWeight: 'normal',
         width: 250,
     },
@@ -255,12 +257,13 @@ const styles = StyleSheet.create({
         paddingRight: 16,
         paddingTop: 16,
         paddingBottom: 24,
-        borderRadius: 12
+        borderRadius: 12,
+        
     },
     leavefeedback:{
         fontFamily: 'inter',
         fontSize: 22,
-        fontWeight:'semibold',
+        fontWeight:'bold',
         lineHeight: 28,
 
     },
@@ -272,17 +275,17 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
 
-    firstnamecontainer:{
-
+    fullnamecontainer:{
+        marginBottom: 12
     },
-    firstname:{
+    fullname:{
           fontSize: 14,
-        fontWeight: 'regular',
+        fontWeight: 'semibold',
         fontFamily: 'Noto Sans Arabic',
         lineHeight: 36,
 
     },
-    firstnameinput:{
+    fullnameinput:{
         paddingHorizontal: 16,
         paddingVertical: 13,
         borderRadius: 12,
@@ -290,20 +293,52 @@ const styles = StyleSheet.create({
         borderColor: '#E1E1E1',
         backgroundColor: '#FBFBFB',
     },
-   
+    typefeedbackcontainer:{
+        display: 'flex',
+        gap: 20
+    },
     typefeedbackinput:{
         textAlign: 'left',
-        alignItems: 'center',
-        justifyContent: 'flex-start',        
-        height: 144,
+        minHeight: 144,
         paddingHorizontal: 16,
         paddingVertical: 13,
         borderRadius: 12,
         borderWidth: 2,
         borderColor: '#E1E1E1',
         backgroundColor: '#FBFBFB',
+        
     },
-   
+    borderline:{
+        borderWidth: 1,
+        borderColor: '#E1E1E1',
+        backgroundColor: '#FBFBFB',
+        marginBottom: 20,
+
+    },
+    leavefeedbackencouragement:{
+        fontSize: 16,
+        fontWeight: 'regular',
+        fontFamily: 'Noto Sans Arabic',
+        lineHeight: 22,
+        color: '#8F8F8F'
+    },
+    leavefeedbackencouragementcontainer:{
+        marginBottom: 20
+    },
+    sendfeedback:{
+         fontSize: 16,
+        fontWeight: 'bold',
+        fontFamily: 'Noto Sans Arabic',
+        lineHeight: 22,
+        color: '#FBFBFB',
+        textAlign: 'center'
+    },
+    sendfeedbackcontainer:{
+        backgroundColor:'#0A5F3A',
+        paddingHorizontal : 24,
+        paddingVertical: 16,
+        borderRadius: 12,
+    },
     feedbackinputcontainer:{
 
     },

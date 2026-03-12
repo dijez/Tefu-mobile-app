@@ -1,27 +1,44 @@
-import { Text, View,Image,TextInput, ImageBackground  } from "react-native";
-import { styles } from "@/styles";
-import { useState } from "react";
-import Ionicons from '@expo/vector-icons/Ionicons';
-import Feather from '@expo/vector-icons/Feather';
-import CustomShape from "@/component/customshape";
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import Footer from "@/components/Footer";
 import { mosques } from "@/data/mosque";
+import { styles } from "@/styles";
+import Feather from '@expo/vector-icons/Feather';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import { LinearGradient } from 'expo-linear-gradient';
-import { useWindowDimensions } from "react-native";
-import { Pressable,Modal } from "react-native";
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
-import Footer from "@/component/Footer";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { useRouter } from "expo-router";
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { useNavigation } from "@react-navigation/native";
 import { BlurView } from "expo-blur";
-
+import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from "expo-router";
+import { useState } from "react";
+import { Image, ImageBackground, Modal, Pressable, ScrollView, Text, TextInput, useWindowDimensions, View } from "react-native";
+import MosqueCard from "@/components/MosqueCard";
+import SearchBar from "@/components/SearchBar";
+import FeedbackModal from "@/components/FeedbackModal";
 
 
 
 export default function Index() {
 
-  const [text, setText] = useState('');
+  // const [text, setText] = useState('');
+  const [fullname, setFullname] = useState('');
+
+  const  handleFullnameChange = (text: any) => {
+    const processedText = text;
+    setFullname(processedText);
+  };
+  const [feedback, setFeedback] = useState('');
+
+  const  handleFeedbackChange = (text: any) => {
+    const processedText = text;
+    setFeedback(processedText);
+  };
+  
+  const [searchmosque, setSearchMosque] = useState('');
+
+  const  handleSearchMosqueChange = (text: any) => {
+    const processedText = text;
+    setSearchMosque(processedText);
+  };
   const {width} = useWindowDimensions();
   const BREAKPOINT_TABLET = 768;
   const isSmallDevice = width < BREAKPOINT_TABLET;
@@ -30,7 +47,7 @@ export default function Index() {
   const [ModalVisible, setModalVisibile] = useState(false);
 
   return (
-    <View 
+    <ScrollView 
     style={styles.container}
     >
       <View style={styles.navtefu} >
@@ -61,17 +78,19 @@ export default function Index() {
      <View >
       <Text style={styles.mosquenear}>Mosques Near You Yet to Observe Prayer</Text>
       <View style={ styles.searchcitycontainer}>
-        <Feather name="search" size={24} color="black" />
+        <Feather name="search" size={20} color="black" />
         <TextInput
         id="searchmosque"
         style={styles.inputsearchcity}
         placeholder="Search by city or mosque name…"
         placeholderTextColor={'#8F8F8F'}
-        value={text}
-        onChangeText={setText}
+        value={searchmosque}
+        onChangeText={handleSearchMosqueChange}
         />
           
       </View>
+      {/* <SearchBar/> */}
+
      </View>
         
 
@@ -135,15 +154,19 @@ export default function Index() {
         ]}
         >
       <View style={styles.seemorecontainer}>
-        <Text style={styles.seemore}>
-          See more 
-        </Text>
+        <Text style={styles.seemore}>See more </Text>
         <MaterialCommunityIcons name="arrow-right" size={20} color="black" />
       </View>
         </Pressable>
         
       
      </View>
+
+      {/* <View style={styles.listmosquecontainer}>
+        {mosques.map((mosque) => (
+          <MosqueCard key={mosque.id} mosque={mosque} />
+        ))}
+      </View> */}
 
 
         <Pressable 
@@ -198,42 +221,64 @@ export default function Index() {
         </View>
 
         <View style={styles.feedbackinputcontainer}>
-          <View>
-          <Text style={styles.firstname}>
+          
+          <View style={styles.fullnamecontainer}>
+          <Text style={styles.fullname}>
             Fullname
           </Text>
            <TextInput
         id="firstname"
-        style={styles.firstnameinput}
+        style={styles.fullnameinput}
         placeholder="E.g. Aliyu Ahmed Bello"
         placeholderTextColor={'#8F8F8F'}
-        value={text}
-        onChangeText={setText}
+        value={fullname}
+        onChangeText={handleFullnameChange}
         />
         </View>
-        <View>
+
+        {/* <View > */}
+        <View style={styles.typefeedbackcontainer}>
 
            <TextInput
         id="typefeedack"
         style={styles.typefeedbackinput}
         placeholder="Type your feedback here"
         placeholderTextColor={'#8F8F8F'}
-        value={text}
-        onChangeText={setText}
+        value={feedback}
+        onChangeText={handleFeedbackChange}
+        multiline= {true}
+        numberOfLines={6}
         />
+
+        <View style={styles.borderline}/>  
+        </View>
+
+        <View style={ styles.leavefeedbackencouragementcontainer}>
+          <Text style={styles.leavefeedbackencouragement}>
+            Leave the team a feedback so that they can continue to serve you better.
+          </Text>
+        </View>
+
+        <View style={styles.sendfeedbackcontainer}>
+          <Text style={styles.sendfeedback}>Send feedback</Text>
         </View>
 
 
         </View>
 
-        <Pressable onPress={() => setModalVisibile(false)}>
+        {/* <Pressable onPress={() => setModalVisibile(false)}>
           <Text>Close</Text>
-        </Pressable>
+        </Pressable> */}
       </View>
     </View>
 
+      {/* <FeedbackModal
+        visible={ModalVisible}
+        onClose={() => setModalVisibile(false)}
+      /> */}
   </View>
-</Modal>
-    </View>
+
+        </Modal>
+    </ScrollView>
   );
 }
