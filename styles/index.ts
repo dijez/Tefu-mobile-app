@@ -1,4 +1,4 @@
-import feedback from "@/app/feedback";
+
 import { StyleSheet } from "react-native";
 
 
@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
         flex: 1,
     backgroundColor: '#FFFFFF',
     margin: 10,
+    padding: 10,
     overflowY: 'scroll',
     },
     text:{

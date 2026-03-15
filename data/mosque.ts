@@ -1,5 +1,6 @@
 export const mosques = [
-  {
+  
+    {
     id: 1,
     name: "Central Mosque",
     city: "Abuja",
@@ -13,7 +14,11 @@ export const mosques = [
         isha: "8:00 PM"
     },
     iqamahTimes:{
-        iqamahMagrib: "7:05 PM",
+        iqamahFajr: "5:05 AM",
+        iqamahDhuhr: "1:05 PM",
+        iqamahAsr: "3:45 PM",
+        iqamahMaghrib: "7:05 PM",
+        iqamahIsha: "8:05 PM",
 
     }
 },
@@ -31,7 +36,11 @@ export const mosques = [
         isha: "8:02 PM"
     },
     iqamahTimes:{
-        iqamahMagrib: "7:02 PM",
+         iqamahFajr: "5:10 AM",
+        iqamahDhuhr: "1:10 PM",
+        iqamahAsr: "3:50 PM",
+        iqamahMaghrib: "7:10 PM",
+        iqamahIsha: "8:10 PM",
     }
   }
 ];

@@ -1,4 +1,5 @@
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import { mosques } from "@/data/mosque";
 import { styles } from "@/styles";
 import Feather from '@expo/vector-icons/Feather';
@@ -14,6 +15,8 @@ import { Image, ImageBackground, Modal, Pressable, ScrollView, Text, TextInput, 
 import MosqueCard from "@/components/MosqueCard";
 import SearchBar from "@/components/SearchBar";
 import FeedbackModal from "@/components/FeedbackModal";
+import { TouchableOpacity } from "react-native";
+import Menu from "./menu";
 
 
 
@@ -45,28 +48,42 @@ export default function Index() {
   const navigation = useNavigation();
   const router = useRouter()
   const [ModalVisible, setModalVisibile] = useState(false);
+  const [menuVisible, setMenuVisible] = useState(false);
+
 
   return (
     <ScrollView 
     style={styles.container}
     >
-      <View style={styles.navtefu} >
+      <Header/>
+      {/* <View style={styles.navtefu} >
         <View style={styles.logocontainer}>
           <Image style={styles.logo} source={require("../assets/images/Frame 3.png")}/>
         <Text style={styles.tefu}>Tefu</Text>
         </View>
         
           <Pressable 
-          
         style={ ( { pressed}) => [
           {transform:[{ scale: pressed ? 0.94 : 1}]}
           // pressed && {opacity: 0.7}
         ]}
         >
-          <Ionicons name="menu-outline" size={24} color="black" />
+          <View style={ {alignItems: 'flex-end'} }>
+
+          <TouchableOpacity onPress={() => setMenuVisible(!menuVisible)}>
+            <Ionicons name="menu-outline" size={24} color="black" />
+          </TouchableOpacity>
+
+          {menuVisible && (
+            <Menu/>
+          )}
+          </View>
+
+
+
         </Pressable>
-          {/* <Image source={require("../assets/images/Hamburger Menu.png")}/> */}
-      </View>
+         
+      </View> */}
       
       
      <View style={styles.secondpart}>
